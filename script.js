@@ -85,3 +85,13 @@ function getHumanChoice() {
 }
 
 getHumanChoice();
+
+/*
+Step 4
+create two variables to hold pc and human scores
+they should both start at 0
+*/
+
+let humanScore = 0;
+let computerScore = 0;
+
