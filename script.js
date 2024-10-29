@@ -34,9 +34,6 @@ create two variables to hold pc and human scores
 they should both start at 0
 */
 
-let humanScore = 0;
-let computerScore = 0;
-
 /*
 Step 5
 create a function playRound to play a round of the game
@@ -49,20 +46,20 @@ if logic where each one gives a point to the score
 and writes out the winner in the log
 */
 
-
-
-
 /*
-Step 5
+Step 6
 create a fn playGame to play 5 rounds
 playround should be inside this function and be repeated 5 times, with loop?
 need to get new choices from the computer each time
 return random value and then chose the best fit in this fn?
-
-
 */
 
+
+let humanScore = 0;
+let computerScore = 0;
+
 let numGames = 5;
+
 
 function playGame() {
   
