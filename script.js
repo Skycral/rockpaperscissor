@@ -18,7 +18,7 @@ function getComputerChoice() {
   let scissor = "scissor";
 
   let randomly = Math.floor(Math.random() * 100);
-  // console.log(randomly);
+  console.log(randomly);
 
   if(randomly <= 33){
     return rock;
@@ -29,6 +29,7 @@ function getComputerChoice() {
   }
 }
 
+//getComputerChoice();
 // console.log(getComputerChoice());
 
 /*Step 3
@@ -45,46 +46,49 @@ function getHumanChoice() {
   
   let humChoice = prompt("Let's play rock, paper, scissor and see if you win!");
 
-  switch (humChoice) {
-    case "rock":
-      console.log(rock);
-      return rock;
+  // let lowHC = humChoice.toLowerCase();
 
-    case "scissor":
-      return scissor;
-    
-    case "paper":
-      return paper;
-    
-    case null:
-      alert("Too bad you didn't want to participate in our game.")
-      break;
+  // switch (lowHC) {
+  //   case null:
+  //     alert("Too bad you didn't want to participate in our game.")
+  //     break;
 
-    default:
-      alert("That wasn't any valid choice, please check your spelling.")
-      return getHumanChoice();
-    }
-
-  // if (humChoice === "rock"){
+  //   case "rock":
   //     console.log(rock);
   //     return rock;
-  // } else if (humChoice === "scissor") {
-  //     console.log(scissor);
+
+  //   case "scissor":
   //     return scissor;
-  // } else if (humChoice === "paper") {
-  //     console.log("paper");
+    
+  //   case "paper":
   //     return paper;
-  
-  // } else if (humChoice === null) {
-  //     alert("Too bad you didn't want to participate in our game.")
-  
-  // } else {
+
+  //   default:
   //     alert("That wasn't any valid choice, please check your spelling.")
   //     return getHumanChoice();
   // }
+
+  if (humChoice === null) {
+    alert("Too bad you didn't want to participate in our game.")
+
+  } else if (humChoice.toLowerCase() === "scissor") {
+      console.log(scissor);
+      return scissor;
+  } else if (humChoice.toLowerCase() === "paper") {
+      console.log("paper");
+      return paper;
+  
+  } else if (humChoice.toLowerCase() === "rock"){
+      console.log(rock);
+      return rock;
+  
+  } else {
+      alert("That wasn't any valid choice, please check your spelling.")
+      return getHumanChoice();
+  }
 }
 
-getHumanChoice();
+//getHumanChoice();
 
 /*
 Step 4
@@ -95,3 +99,40 @@ they should both start at 0
 let humanScore = 0;
 let computerScore = 0;
 
+/*
+Step 5
+create a function playRound to play a round of the game
+define two params to take in the choices of pc and user 
+make the input choice case insensitive - use lowercase method
+use logic to understand who wins in each round - rock beats scissor
+scissor beats paper
+paper beats rock
+if logic where each one gives a point to the score 
+and writes out the winner in the log
+*/
+
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === "rock" && computerChoice === "rock" || humanChoice === "scissor" && computerChoice === "scissor" || humanChoice === "paper" && computerChoice === "paper") {
+    console.log("This is a draw, no points awarded.");
+    console.log(`Score is: User ${humanScore} points | Computer ${computerScore} points`)
+  
+  } else if (humanChoice === "rock" && computerChoice === "scissor" || humanChoice === "scissor" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "rock") {
+      console.log("Victory!!");
+      humanScore += 1;
+      console.log(`Score is: User ${humanScore} points | Computer ${computerScore} points`)
+  
+    } else if (humanChoice === "rock" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "scissor" || humanChoice === "scissor" && computerChoice === "rock") {
+      console.log("You lose..");
+      computerScore += 1;
+      console.log(`Score is: User ${humanScore} points | Computer ${computerScore} points`)
+  }
+
+
+}
+
+const humanSelection = getHumanChoice();
+
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
