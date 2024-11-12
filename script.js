@@ -12,19 +12,12 @@ Use if else to define the return
 
 */
 
-
-
-//getComputerChoice();
-// console.log(getComputerChoice());
-
 /*Step 3
 Write fn getHumanChoice where user can choose btw rock, paper, scissor
 add a prompt where user writes choice - if no valid input, ask again
 add variables to hold the choice
 (add a multi choice to avoid any wrong doing?)
 */
-
-
 
 //getHumanChoice();
 
@@ -57,13 +50,11 @@ return random value and then chose the best fit in this fn?
 
 let humanScore = 0;
 let computerScore = 0;
-
 let numGames = 5;
 
 
 function playGame() {
   
-
   function getComputerChoice() {
     let rock = "rock";
     let paper = "paper";
@@ -88,29 +79,7 @@ function playGame() {
     let scissor = "scissor";
     
     let humChoice = prompt("Let's play rock, paper, scissor and see if you win!");
-  
-    // let lowHC = humChoice.toLowerCase();
-  
-    // switch (lowHC) {
-    //   case null:
-    //     alert("Too bad you didn't want to participate in our game.")
-    //     break;
-  
-    //   case "rock":
-    //     console.log(rock);
-    //     return rock;
-  
-    //   case "scissor":
-    //     return scissor;
-      
-    //   case "paper":
-    //     return paper;
-  
-    //   default:
-    //     alert("That wasn't any valid choice, please check your spelling.")
-    //     return getHumanChoice();
-    // }
-  
+
     if (humChoice === null) {
       alert("Too bad you didn't want to participate in our game.");
       return null;
@@ -132,8 +101,6 @@ function playGame() {
     }
   }
 
-  
-  
   function playRound(humanChoice, computerChoice) {
     if (humanChoice === "rock" && computerChoice === "rock" || humanChoice === "scissor" && computerChoice === "scissor" || humanChoice === "paper" && computerChoice === "paper") {
       console.log("This is a draw, no points awarded.");
@@ -144,8 +111,6 @@ function playGame() {
     } else if (humanChoice === "rock" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "scissor" || humanChoice === "scissor" && computerChoice === "rock") {
         computerScore += 1;
     }
-  
-  
   }
 
   for (let index = 0; index < numGames; index++) {
@@ -160,6 +125,7 @@ function playGame() {
     console.log(`Score is: User ${humanScore} points | Computer ${computerScore} points`);
   }
   
+
   if (humanScore === computerScore) {
     console.log("No winner this time - it ends in a draw.");
   } else if (humanScore > computerScore){
@@ -167,8 +133,6 @@ function playGame() {
   } else {
     console.log("Sorry but no champagne for you, the computer outsmarted you.");
   }
-  
-
 }
 
 playGame();
