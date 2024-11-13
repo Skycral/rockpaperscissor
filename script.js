@@ -1,12 +1,10 @@
-console.log("Hello World");
-
-
 let humanScore = 0;
 let computerScore = 0;
-let numGames = 5;
+
 
 const div = document.querySelector("div");
 const p = document.createElement("p");
+const p2 = document.createElement("p");
 
 
 function getComputerChoice() {
@@ -27,8 +25,11 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+
+  p2.textContent = "";
+
   if (humanChoice === "rock" && computerChoice === "rock" || humanChoice === "scissor" && computerChoice === "scissor" || humanChoice === "paper" && computerChoice === "paper") {
-    console.log("This is a draw, no points awarded.");
+    p2.textContent = "This is a draw, no points awarded.";
   
   } else if (humanChoice === "rock" && computerChoice === "scissor" || humanChoice === "scissor" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "rock") {
       humanScore += 1;
@@ -37,79 +38,61 @@ function playRound(humanChoice, computerChoice) {
       computerScore += 1;
   }
 
-  p.textContent = `Score is: User ${humanScore} points | Computer ${computerScore} points`;
+  if (computerScore == 5) {
+    p.textContent = `Score is: User ${humanScore} points | Computer ${computerScore} points`;
+    p2.textContent = "Sorry but no champagne for you, the computer outsmarted you.";
+  
+  } else if (humanScore == 5){
+    p.textContent = `Score is: User ${humanScore} points | Computer ${computerScore} points`;
+    p2.textContent = "You did it, you overcame the machine and won!!";
+  
+  } else {
+    p.textContent = `Score is: User ${humanScore} points | Computer ${computerScore} points`;
+  }
+
+
+  
   div.appendChild(p);
+  div.appendChild(p2);
 }
 
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissor = document.querySelector(".scissor");
+const startover = document.querySelector(".startover");
 
 rock.addEventListener("click", () => {
-  playRound("rock", getComputerChoice());
+  if (humanScore == 5 || computerScore == 5) {
+    alert("The game is finished. Please press START OVER to continue playing.")
+  } else {
+    playRound("rock", getComputerChoice());
+  }
+
 });
 
 paper.addEventListener("click", () => {
+  if (humanScore == 5 || computerScore == 5) {
+    alert("The game is finished. Please press START OVER to continue playing.")
+  } else {
   playRound("paper", getComputerChoice());
+  }
 });
 
 scissor.addEventListener("click", () => {
+  if (humanScore == 5 || computerScore == 5) {
+    alert("The game is finished. Please press START OVER to continue playing.")
+  } else {
   playRound("scissor", getComputerChoice());
+  }
 });
 
-// if (humanSelection === null) {
-//   console.log(`Score ends: User ${humanScore} points | Computer ${computerScore} points`);
-// }
-// console.log(`Score is: User ${humanScore} points | Computer ${computerScore} points`);
+startover.addEventListener("click", () => {
+  humanScore = 0;
+  computerScore = 0;
 
+  p.textContent = "";
+  p2.textContent = "";
 
-
-// if (humanScore === computerScore) {
-//   console.log("No winner this time - it ends in a draw.");
-// } else if (humanScore > computerScore){
-//   console.log("You did it, you overcame the machine and won!!");
-// } else {
-//   console.log("Sorry but no champagne for you, the computer outsmarted you.");
-// }
-
-// function playGame() {
-  
-  
-
-
-//   function getHumanChoice(hc) {
-    
-
-
-    
-//     let humChoice = hc;
-
-//     if (humChoice === null) {
-//       alert("Too bad you didn't want to participate in our game.");
-//       return null;
-  
-//     } else if (humChoice.toLowerCase() === "scissor") {
-//         console.log(scissor);
-//         return scissor;
-//     } else if (humChoice.toLowerCase() === "paper") {
-//         console.log("paper");
-//         return paper;
-    
-//     } else if (humChoice.toLowerCase() === "rock"){
-//         console.log(rock);
-//         return rock;
-    
-//     } else {
-//         alert("That wasn't any valid choice, please check your spelling.")
-//         return getHumanChoice();
-//     }
-//   }
-
-  
-//   const humanSelection = getHumanChoice();
-//   playRound(humanSelection, computerSelection);
-//   console.log(humanSelection);
-  
-// }
-
-// playGame();
+  div.appendChild(p);
+  div.appendChild(p2);
+});
